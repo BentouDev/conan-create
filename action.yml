@@ -2,12 +2,8 @@ name: 'Conan Create'
 description: 'Builds conan package from recipe'
 
 inputs:
-  runner:
-    description: Name of Github Actions runner to use
-    required: true
-    type: string
-  package_name:
-    description: Name of conan package to build
+  package_id:
+    description: Id of conan package to build
     required: true
     type: string
   recipe_dir:
@@ -21,5 +17,5 @@ runs:
   steps:
     - id: conan
       uses: turtlebrowser/get-conan@v1.1
-    - run: conan create ${{ inputs.recipe_dir }} ${{ inputs.package_name }}
+    - run: conan create ${{ inputs.recipe_dir }} ${{ inputs.package_id }}
       shell: bash

@@ -11,11 +11,15 @@ inputs:
     default: '.'
     required: true
     type: string
+  options:
+    description: Additional arguments passed to conan
+    required: false
+    type: string
 
 runs:
   using: "composite"
   steps:
     - id: conan
       uses: turtlebrowser/get-conan@v1.1
-    - run: conan create ${{ inputs.recipe_dir }} ${{ inputs.package_id }}
+    - run: conan create ${{ inputs.recipe_dir }} ${{ inputs.package_id }} ${{ inputs.options }}
       shell: bash
